@@ -23,4 +23,8 @@ RUN cd / && \
     cd azure-functions-cli && \
     chmod +x func && \
     export PATH=`pwd`:$PATH && \
+    chmod -R 777 /tmp && \
+    setfacl -d -m g::rwx /tmp && \
+    chmod -R 777 /tmp && \
+    getfacl /tmp && \
     func
