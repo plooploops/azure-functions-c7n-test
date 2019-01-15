@@ -1,0 +1,26 @@
+FROM aluong24/cloud-custodian-python36
+
+#assumes that the cloud-custodian directory and python 3.6 are available.
+#install basics.
+RUN apt-get -y install vim && apt-get -y install sudo
+
+#set debian packages
+RUN wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
+    sudo mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
+    wget -q https://packages.microsoft.com/config/debian/8/prod.list && \
+    sudo mv prod.list /etc/apt/sources.list.d/microsoft-prod.list && \
+    sudo chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg && \
+    sudo chown root:root /etc/apt/sources.list.d/microsoft-prod.list
+
+#install .NET core 
+RUN sudo apt-get update && sudo apt-get -y install aspnetcore-runtime-2.1
+
+#install core functions
+ENV PATH "$PATH:/azure-functions-cli"
+RUN cd / && \
+    wget https://github.com/Azure/azure-functions-core-tools/releases/download/2.3.199/Azure.Functions.Cli.linux-x64.2.3.199.zip && \
+    unzip -d azure-functions-cli Azure.Functions.Cli.linux-x64.*.zip && \
+    cd azure-functions-cli && \
+    chmod +x func && \
+    export PATH=`pwd`:$PATH && \
+    func
