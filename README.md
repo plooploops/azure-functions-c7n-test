@@ -1,4 +1,4 @@
-# azure-functions=c7n-test
+# azure-functions-c7n-test
 
 This will be a test environment for running Python 3.6 in Azure Functions.
 
