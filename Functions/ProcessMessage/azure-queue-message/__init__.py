@@ -12,8 +12,9 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
         logging.info(req.get_json())
         json_contents = req.get_json()
         body = json_contents.get('body')
+        logging.info(body)
         results = message.unpack(body)
         return func.HttpResponse(results)
-        # return func.HttpResponse(json.dumps(results))
-    except Exception:
+    except Exception as e:
+        logging.info(e)
         pass

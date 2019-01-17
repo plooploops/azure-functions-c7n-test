@@ -3,6 +3,7 @@ import copy
 import zlib
 import logging
 import json
+
 #the 'unpack' to 'pack'
 #https://github.com/cloud-custodian/cloud-custodian/blob/master/c7n/actions/notify.py
 
@@ -16,5 +17,5 @@ import json
 #     return b64encoded.decode('ascii')
 
 def unpack(message):
-    logging.info('unpack')
-    return zlib.decompress(base64.b64decode(message.encode('ascii'))).decode('utf-8')
+    # logging.info(message)
+    return zlib.decompress(base64.b64decode(message[2::])).decode('utf-8')
