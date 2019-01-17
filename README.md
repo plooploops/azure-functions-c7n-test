@@ -35,7 +35,9 @@ Assuming we have Docker installed, we can run the image (in Linux Containers).
 docker run -it myplooploops/cloud-custodian-python36 -v <localpath-custodian>:/cloud-custodian -v <localpath-policies>:/policies -v <localpath-functions>:/functions
 ```
 
-Navigate to the functions folder and then make a test function.
+Navigate to the functions folder and then make a test function.  This will create a **function app folder** which we can populate with additional **functions**.
+
+In bash, we can also enter the virtual environment and check that we can create a new function app.
 
 ```bash
 cd /functions
@@ -45,6 +47,8 @@ source .env/bin/activate
 
 func init myfuncproj
 ```
+
+In powershell, we can also enter the virtual environment and check that we can create a new function app.
 
 ```powershell
 cd .\functions
@@ -63,15 +67,30 @@ az login
 az account set -s 'account id'
 ```
 
+## Using Azure Functions for Python
+We can refer to this [guide for python functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-python) for the next steps.
+
 ### Creating a function
+
+This will let us create a new **trigger based function** to add to the function app.
 
 ```bash
 func new
 ```
 
-We can pick an HTTP trigger for now.
+We can pick an **HTTP trigger** for now.
 
 ![New Function](./media/functions/func-new.png)
+
+### Run A function locally
+
+Assuming that we've created a function to stick in function app, we can test it locally by spinning up the function core tools host.  We'll want to be in the **working directory** for the function app.
+
+```bash
+func host start
+```
+
+![New Function](./media/functions/func-host.png)
 
 ### Publishing
 
@@ -135,6 +154,15 @@ Assuming that we're able to write to the **/tmp folder** and able to resolve the
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
+
+### Helpful Function Commands
+
+This will list the functions that are part of a given function app in azure.
+```bash
+func azure functionapp list-functions <functionapp>
+```
+
+func azure functionapp list-functions andy-fa-python-test
 
 ## A note on Cloud Custodian
 
