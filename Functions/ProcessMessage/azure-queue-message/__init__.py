@@ -9,12 +9,14 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
     
     try:
-        logging.info(req.get_json())
-        json_contents = req.get_json()
-        body = json_contents.get('body')
+        #local debugging with the raw input
+        #logging.info(req.get_json())
+        #json_contents = req.get_json()
+        #body = json_contents.get('body')
+        body = req.get_body()
         logging.info(body)
         results = message.unpack(body)
-        return func.HttpResponse(results)
+        return func.HttpResponse(body=results, headers={ "Content-Type" : "application/json" })
     except Exception as e:
         logging.info(e)
         pass
