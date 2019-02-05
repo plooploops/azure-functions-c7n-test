@@ -6,7 +6,7 @@ This will be a test environment for running Python 3.6 in Azure Functions.
 
 1. [Create a Python Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-function-python)
 1. [Working with Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local#v2)
-1. [Create a function app](https://docs.microsoft.com/en-us/azure/azure-functions/functions-cli-samples#create)]
+1. [Create a function app](https://docs.microsoft.com/en-us/azure/azure-functions/functions-cli-samples#create)
 1. [Create function app for Serverless](https://docs.microsoft.com/en-us/azure/azure-functions/scripts/functions-cli-create-serverless)
 1. [Cloud Custodian](https://github.com/cloud-custodian/cloud-custodian/)
 
