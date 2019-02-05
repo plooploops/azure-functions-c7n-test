@@ -37,7 +37,7 @@ We can use the docker image that has cloud custodian and python set up.  We'll a
 > Make sure that we're using Docker in Linux mode.  Also be careful with the volume mount paths.  If there's trouble picking up the volume mount, we can try restarting docker as well.
 
 ```powershell
-Docker run -it -v <repopath>:/cloud-custodian <policiespath>:/policies aluong24/cloud-custodian-python36
+docker run -it -v <repopath>:/cloud-custodian <policiespath>:/policies aluong24/cloud-custodian-python36
 ```
 
 Inside the running container, we'll want to swap out the built-in libraries for c7n and c7n_azure so we can use the modified versions.  We'll also pull in vim and sudo.
@@ -56,14 +56,14 @@ apt-get install vim
 apt-get install sudo
 ```
 
-Make sure to log into to Azure.  The context for the login should have rights to push to Azure Queue.  If it's not in the container, be sure to [install Az Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
+Make sure to log into to Azure.  The context for the login should have rights to push to Azure Queue.  If it's not in the container, be sure to [install Az Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ```az cli
 az login
 ```
 
 We can also point to an example policy.
-[Find VMs sample](../sample-policies/find-vms.yaml)
+[Find VMs sample](../sample-policies/find-vms.yaml).
 
 In this policy, we'd like to just find vms and then notify the queue.
 
