@@ -1,0 +1,13 @@
+policies:
+  - name: mark-for-delete-stopped-vms
+    resource: azure.vm
+    actions:
+      - type: notify
+        template: default
+        subject: mark for delete vm in 3 days
+        to:
+          - someone@test.com
+        transport:
+          type: asq
+          queue: https://MYQUEUE.queue.core.windows.net/MYQUEUECONTAINER
+          encode_ascii: False

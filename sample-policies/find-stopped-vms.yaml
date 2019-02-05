@@ -1,0 +1,22 @@
+policies:
+  - name: mark-for-delete-stopped-vms
+    resource: azure.vm
+    filters:
+      - type: instance-view
+        key: statuses[].code
+        op: in
+        value_type: swap
+        value: PowerState/stopped
+    actions:
+      - type: mark-for-op
+        op: delete
+        days: 3
+      - type: notify
+        template: default
+        subject: mark for delete vm in 3 days
+        to:
+          - someone@test.com
+        transport:
+          type: asq
+          queue: https://MYQUEUE.queue.core.windows.net/MYQUEUECONTAINER
+          encode_ascii: False
