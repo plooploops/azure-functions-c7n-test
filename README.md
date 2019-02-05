@@ -12,6 +12,8 @@ This will be a test environment for running Python 3.6 in Azure Functions.
 
 ## Clone C7n
 
+> We're going want to use this in conjunction with this PR until it's merged: https://github.com/cloud-custodian/cloud-custodian/pull/3497
+
 We're going to assume that we have a local copy of the custodian project.
 
 ```powershell
@@ -166,5 +168,5 @@ func azure functionapp list-functions andy-fa-python-test
 
 ## A note on Cloud Custodian
 
-We also have the c7n environment, which we can refer to [Cloud Custodian](http://cloudcustodian.io) and it's [github repo](https://github.com/cloud-custodian/cloud-custodian).
+We also have the c7n environment, which we can refer to [Cloud Custodian](http://cloudcustodian.io) and its [github repo](https://github.com/cloud-custodian/cloud-custodian).
 
